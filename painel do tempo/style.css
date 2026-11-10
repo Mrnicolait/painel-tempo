@@ -1,0 +1,79 @@
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 16px;
+    background-color: #edf3f8;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+/* Seletor de elemento: configuração base da atividade. */
+div {
+    display: inline-block;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+}
+/* Seletor de ID. */
+#painel {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border: 2px solid #142333;
+    box-shadow: 0 8px 24px #14233326;
+}
+#painel > .cabecalho {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    padding: 20px 12px;
+}
+.cabecalho { background-color: rgb(14, 14, 119); }
+/* Seletores descendentes. */
+.cabecalho h1, .cabecalho p, .cabecalho .icone { text-align: center; }
+.cabecalho h1 { margin: 8px 0; font-size: clamp(22px, 5vw, 30px); }
+.cabecalho p { margin: 0; }
+.cabecalho .icone { display: block; font-size: 42px; }
+/* Seletor de classe: mesmo tamanho e espaçamento. */
+.card {
+    padding: 22px 8px;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+/* Seletor de filho: centraliza o conteúdo dos cartões. */
+#painel > .card { text-align: center; }
+.card > span, .card > strong { display: block; }
+.card > .icone { margin-bottom: 10px; font-size: 48px; line-height: 1; }
+.card > strong { margin-top: 10px; font-size: 27px; }
+.temperatura { background-color: #0072dc; }
+.umidade { background-color: #237f32; }
+.vento { background-color: #7624b4; }
+.condicao { background-color: #b85c00; }
+.amanha { background-color: #007e83; }
+.localizacao { background-color: #c92564; }
+/* Seletor estrutural: o cabeçalho é o primeiro filho;
+   o quarto cartão (Condição) é o quinto filho. */
+#painel > .card:nth-child(5) { border-width: 4px; }
+/* Pseudoclasse: aumenta levemente os cartões e altera a sombra. */
+.card:hover {
+    position: relative;
+    z-index: 1;
+    transform: scale(1.04);
+    box-shadow: 0 6px 18px #00000055;
+}
+.vento:hover { background-color: #9250ca; }
+@media (max-width: 640px) {
+    #painel { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #painel > .card { width: 100%; }
+}
+@media (max-width: 360px) {
+    #painel { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+}
+
+
+
